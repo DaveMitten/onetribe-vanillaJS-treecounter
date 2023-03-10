@@ -25,7 +25,69 @@ Bring in stats api EP
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
+    <style>
+      .section {
+        display: flex;
+        flex-direction: row;
+      }
+      .treeCounterContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .treeCounter {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .controls {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+      .innerTopWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .controlsWrapper {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: stretch;
+      }
+      .input {
+        margin-top: 5px;
+      }
+      input [type="number"] .spaceBetween {
+        justify-content: space-between;
+      }
+      main {
+        padding: 15px 25px;
+        max-width: 60vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+        border-radius: 2px;
+        box-shadow: 10px 5px 5px lightgrey;
+      }
+      body {
+        width: 100%;
+        height: 100vh;
+        background-color: lightgray;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
     <script>
       function init() {
         var treeCounter = document.getElementById("treeCounter");
@@ -88,15 +150,13 @@ Bring in stats api EP
             } else {
               console.log("selector does not exist!");
             }
-            // identify an element to observe
             var elementToObserve =
-              window.document.getElementById("treeCounter").children[0];
+              window.document.getElementById("treeCounter");
+
             const observer = new MutationObserver(function (
               mutationsList,
               observer
             ) {
-              // identify an element to observe
-              console.log("elementToObserve", elementToObserve);
               if (elementToObserve) {
                 console.log("observer selector exists!");
                 resolve(counter);
@@ -105,7 +165,6 @@ Bring in stats api EP
                 console.log("observer selector does not exist!");
               }
             });
-            console.log("outside observer!", typeof elementToObserve);
             observer.observe(elementToObserve, {
               characterData: false,
               childList: true,
@@ -117,7 +176,6 @@ Bring in stats api EP
           console.log("INSERT SVG");
           var treeCounter = document.getElementById("treeCounter");
           var screenSize = screen.width;
-          // treeCounter.innerHTML = SVGforScreenSize(screenSize);
           treeCounter.innerHTML = treeSVG(
             trees,
             "#000000",
@@ -172,8 +230,56 @@ Bring in stats api EP
     </script>
   </head>
   <body>
-    <div id="treeCounter" data-merchant-id="aOzKbRJXjrDTTklVPLQRVQM"",
-    data-trees-to-add="100", data-increment-by="1" data-style="" data-delay=""
-    data-duration="2000" />
+    <main>
+      <section class="section" style="margin-bottom: 20px">
+        <div class="innerTopWrapper">
+          <h2>Onetribe tree counter</h2>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+            tempore temporibus sunt impedit itaque voluptates odit nobis sequi
+            dicta numquam nulla laborum sed ratione nostrum mollitia et, in
+            veritatis quisquam.
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+            tempore temporibus sunt impedit itaque voluptates odit nobis sequi
+            dicta numquam nulla laborum sed ratione nostrum mollitia et, in
+            veritatis quisquam.
+          </div>
+        </div>
+      </section>
+      <section class="section spaceBetween">
+        <div class="controlsWrapper">
+          <div class="controls">
+            <div>
+              <h3>Style</h3>
+              <input class="input" type="radio" />
+              <h3>Invert</h3>
+              <input class="input" type="checkbox" />
+              <h3>Increase By</h3>
+              <input class="input" type="number" />
+            </div>
+            <div>
+              <h3>Delay (ms)</h3>
+              <input class="input" type="number" />
+              <h3>Duration (seconds)</h3>
+              <input class="input" type="number" />
+            </div>
+          </div>
+        </div>
+        <div class="treeCounterContainer">
+          <!-- demo -->
+          <div class="treeCounter" id="treeCounter"
+          data-merchant-id="aOzKbRJXjrDTTklVPLQRVQM"", data-trees-to-add="100",
+          data-increment-by="1" data-style="" data-delay="2000"
+          data-duration="2000" />
+        </div>
+      </section>
+      <section class="section">
+        <div>
+          <input type="" />
+        </div>
+      </section>
+    </main>
   </body>
 </html>
